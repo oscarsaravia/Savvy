@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.android.proyecto_final.R
 import com.example.android.proyecto_final.databinding.HomeFragmentBinding
 import com.example.android.proyecto_final.databinding.LoginFragmentBinding
@@ -33,6 +34,19 @@ class HomeFragment : Fragment() {
         //Data Binding
         val binding = DataBindingUtil.inflate<HomeFragmentBinding>(inflater,
             R.layout.home_fragment, container, false)
+
+        binding.inventoryButton.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_inventoryFragment)
+        }
+        binding.addProductoButton.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_addproductFragment)
+        }
+        binding.searchButton2.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_providersFragment)
+        }
+        binding.addProviderButton.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_addproviderFragment)
+        }
 
         return binding.root
     }

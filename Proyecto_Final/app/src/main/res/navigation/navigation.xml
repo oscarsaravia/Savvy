@@ -24,7 +24,20 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_addproductFragment"
+            app:destination="@id/addproductFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_providersFragment"
+            app:destination="@id/providersFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addproviderFragment"
+            app:destination="@id/addproviderFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -33,13 +46,97 @@
     <fragment
         android:id="@+id/inventoryFragment"
         android:name="com.example.android.proyecto_final.inventory.InventoryFragment"
-        android:label="InventoryFragment" />
+        android:label="InventoryFragment" >
+        <action
+            android:id="@+id/action_inventoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_inventoryFragment_to_selectedItemFragment"
+            app:destination="@id/selectedItemFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.android.proyecto_final.register.RegisterFragment"
         android:label="RegisterFragment" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addproductFragment"
+        android:name="com.example.android.proyecto_final.inventory.AddproductFragment"
+        android:label="AddproductFragment" >
+        <action
+            android:id="@+id/action_addproductFragment_to_inventoryFragment"
+            app:destination="@id/inventoryFragment"
+            app:popUpTo="@id/inventoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedItemFragment"
+        android:name="com.example.android.proyecto_final.inventory.SelectedItemFragment"
+        android:label="SelectedItemFragment" >
+        <action
+            android:id="@+id/action_selectedItemFragment_to_editProductFragment"
+            app:destination="@id/editProductFragment" />
+        <action
+            android:id="@+id/action_selectedItemFragment_to_inventoryFragment"
+            app:destination="@id/inventoryFragment"
+            app:popUpTo="@id/inventoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProductFragment"
+        android:name="com.example.android.proyecto_final.inventory.EditProductFragment"
+        android:label="EditProductFragment" >
+        <action
+            android:id="@+id/action_editProductFragment_to_inventoryFragment"
+            app:destination="@id/inventoryFragment"
+            app:popUpTo="@id/inventoryFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/providersFragment"
+        android:name="com.example.android.proyecto_final.providers.ProvidersFragment"
+        android:label="ProvidersFragment" >
+        <action
+            android:id="@+id/action_providersFragment_to_selectedProviderFragment"
+            app:destination="@id/selectedProviderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedProviderFragment"
+        android:name="com.example.android.proyecto_final.providers.SelectedProviderFragment"
+        android:label="SelectedProviderFragment" >
+        <action
+            android:id="@+id/action_selectedProviderFragment_to_editProviderFragment"
+            app:destination="@id/editProviderFragment" />
+        <action
+            android:id="@+id/action_selectedProviderFragment_to_providersFragment"
+            app:destination="@id/providersFragment"
+            app:popUpTo="@id/providersFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProviderFragment"
+        android:name="com.example.android.proyecto_final.providers.EditProviderFragment"
+        android:label="EditProviderFragment" >
+        <action
+            android:id="@+id/action_editProviderFragment_to_providersFragment"
+            app:destination="@id/providersFragment"
+            app:popUpTo="@id/providersFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addproviderFragment"
+        android:name="com.example.android.proyecto_final.providers.AddproviderFragment"
+        android:label="AddproviderFragment" >
+        <action
+            android:id="@+id/action_addproviderFragment_to_providersFragment"
+            app:destination="@id/providersFragment"
+            app:popUpTo="@id/providersFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

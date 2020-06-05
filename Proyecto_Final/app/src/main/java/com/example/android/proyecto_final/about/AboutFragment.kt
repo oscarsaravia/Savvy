@@ -11,9 +11,7 @@ import com.example.android.proyecto_final.R
 import com.example.android.proyecto_final.databinding.AboutFragmentBinding
 
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class AboutFragment : Fragment() {
 
     override fun onCreateView(
@@ -22,7 +20,7 @@ class AboutFragment : Fragment() {
     ): View? {
 
         //Set title
-        (activity as AppCompatActivity).supportActionBar?.title = "@string/about_title"
+        (activity as AppCompatActivity).supportActionBar?.title = "@Acerca de la aplicación"
 
         //Data Binding
         val binding = DataBindingUtil.inflate<AboutFragmentBinding>(inflater,

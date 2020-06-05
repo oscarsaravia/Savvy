@@ -1,6 +1,5 @@
 package com.example.android.proyecto_final.register
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -13,7 +12,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 
 
@@ -37,8 +35,7 @@ class RegisterFragment : Fragment() {
     private lateinit var usernametxt: EditText
     private lateinit var companytxt: EditText
     private lateinit var binding: RegisterFragmentBinding
-    private lateinit var dbReference: DatabaseReference
-    private lateinit var db:FirebaseFirestore
+    private lateinit var db: FirebaseFirestore
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private lateinit var FviewModel: FirestoreViewModel
@@ -64,12 +61,12 @@ class RegisterFragment : Fragment() {
         emailtxt = binding.emailEditText
         usernametxt = binding.usernameEditText
         companytxt = binding.companyEditText
-        database = FirebaseDatabase.getInstance()
         auth = FirebaseAuth.getInstance()
-        dbReference = database.reference.child("User")
+
 
         binding.button.setOnClickListener { v: View ->
             register(v)
+
         }
 
         return binding.root
@@ -86,33 +83,18 @@ class RegisterFragment : Fragment() {
         val username = usernametxt.text.toString()
         val company = companytxt.text.toString()
 
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(username) && !TextUtils.isEmpty(company)
+
+
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(
+                username
+            ) && !TextUtils.isEmpty(company)
         ) {
-            FviewModel.crearUsuario(name, company, username, email)
             activity?.let {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(it) { task ->
                         if (task.isComplete) {
-                            //Toast.makeText(activity, "Registrado correctamente", Toast.LENGTH_LONG) .show()
-                            //val userHashMap = hashMapOf(
-                             //   "name" to name,
-                              //  "company" to company,
-                                //"username" to username,
-                                //"email" to email)
-                            //db.collection("users")
-                              //  .add(userHashMap)
-                                //.addOnSuccessListener { documentReference ->
-                                  //  Log.d("OSCAR", "DocumentSnapshot added with ID: ${documentReference.id}")
-                                //}
-                                //.addOnFailureListener { e ->
-                                 //   Log.w("OSCAR", "Error adding document", e)
-                                //}
-
-                            //val user: FirebaseUser? = auth.currentUser
-                            //verifyEmail(user)
-                            //val userBD = user?.uid?.let { it1 -> dbReference.child(it1) }
-                            //userBD?.child("Name")?.setValue(name)
-                            //userBD?.child("Company")?.setValue(company)
+                            val user:FirebaseUser?=auth.currentUser
+                            FviewModel.crearUsuario(nametxt.text.toString(), companytxt.text.toString(), usernametxt.text.toString(), emailtxt.text.toString(), user?.uid.toString())
                             action()
 
                         } else {
@@ -129,29 +111,12 @@ class RegisterFragment : Fragment() {
         view?.findNavController()?.navigate(R.id.action_registerFragment_to_loginFragment)
     }
 
-    private fun verifyEmail(user: FirebaseUser?) {
-        activity?.let {
-            user?.sendEmailVerification()
-                ?.addOnCompleteListener(it) { task ->
 
-                    if (task.isComplete) {
-                        Toast.makeText(
-                            activity,
-                            "E-mail de verificación enviado",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            activity,
-                            "Error al enviar correo de verificación",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
 
-                }
-        }
-    }
 }
+
+
+
 
 
     

@@ -6,8 +6,8 @@ class FirestoreViewModel: ViewModel() {
 
     val firestoreUseCase = FirestoreUseCase()
 
-    fun crearUsuario(name:String, company:String, username:String, email:String){
-        firestoreUseCase.setUserFirestore(name,company,username,email)
+    fun crearUsuario(name:String, company:String, username:String, email:String, uid:String){
+        firestoreUseCase.setUserFirestore(name,company,username,email,uid)
 
     }
 

@@ -2,13 +2,15 @@ package com.example.android.proyecto_final.firebase
 
 import android.util.Log
 import android.widget.Toast
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class FirebaseRepo {
 
-    val db = FirebaseFirestore.getInstance()
+    private val db = Firebase.firestore
 
-    fun setUserData(name:String, company:String, username:String, email:String){
+    fun setUserData(name:String, company:String, username:String, email:String, uid:String){
+        Log.d("ENTER", "Entrando al metodo")
 
         val userHashMap = hashMapOf(
             "name" to name,
@@ -16,11 +18,12 @@ class FirebaseRepo {
             "username" to username,
             "email" to email)
 
-        db.collection("users")
-            .add(userHashMap as Map<String, Any>).addOnCompleteListener{
-                if(it.isSuccessful){
-
-                }
+        db.collection("users").document(uid)
+            .set(userHashMap).addOnSuccessListener {
+                Log.d("HERE", "DocumentSnapshot added with ID:")
+            }
+            .addOnFailureListener{e->
+                Log.w("HERE", "Error adding document", e)
             }
 
     }
