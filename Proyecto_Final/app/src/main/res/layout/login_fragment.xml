@@ -6,7 +6,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#0896A8">
 
         <ImageView
             android:id="@+id/logo_image"
@@ -31,6 +32,8 @@
             android:ems="10"
             android:hint="@string/username"
             android:inputType="textPersonName"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FDFDFD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo_image" />
@@ -43,6 +46,8 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_text" />
@@ -52,7 +57,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:background="#FFEB3B"
+            android:fontFamily="@font/bubblegum_sans"
             android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
