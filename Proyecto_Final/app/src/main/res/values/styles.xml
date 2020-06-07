@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="button_Style">
+        <item name="android:background">#FFEB3B</item>
+        <item name="android:fontFamily">@font/bubblegum_sans</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
