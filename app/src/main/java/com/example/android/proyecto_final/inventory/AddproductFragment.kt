@@ -25,8 +25,7 @@ class AddproductFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Agregar un producto"
         (activity as AppCompatActivity).supportActionBar?.hide()
 
-        val binding = DataBindingUtil.inflate<AddproductFragmentBinding>(inflater,
-            R.layout.addproduct_fragment, container, false)
+        val binding = DataBindingUtil.inflate<AddproductFragmentBinding>(inflater, R.layout.addproduct_fragment, container, false)
 
         binding.add.setOnClickListener {
             val newproduct = hashMapOf(

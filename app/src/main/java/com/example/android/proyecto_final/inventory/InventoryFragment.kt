@@ -1,26 +1,26 @@
 package com.example.android.proyecto_final.inventory
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.view.*
+import android.view.inputmethod.EditorInfo
+import android.widget.SearchView
+import android.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.android.proyecto_final.network.MainAdapter
 import com.example.android.proyecto_final.R
 import com.example.android.proyecto_final.databinding.InventoryFragmentBinding
 import com.example.android.proyecto_final.network.CurrentProductInfo
+import com.example.android.proyecto_final.network.MainAdapter
 import com.example.android.proyecto_final.network.OnProductItemClickListener
 import com.example.android.proyecto_final.network.Product
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.inventory_fragment.*
+
 
 class InventoryFragment : Fragment(), OnProductItemClickListener{
 
@@ -35,11 +35,13 @@ class InventoryFragment : Fragment(), OnProductItemClickListener{
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Inventario"
-        (activity as AppCompatActivity).supportActionBar?.hide()
+//        (activity as AppCompatActivity).supportActionBar?.title = "Inventario"
+//        (activity as AppCompatActivity).supportActionBar?.hide()
 
-        val binding = DataBindingUtil.inflate<InventoryFragmentBinding>(inflater,
-            R.layout.inventory_fragment, container, false)
+        val binding = DataBindingUtil.inflate<InventoryFragmentBinding>(inflater, R.layout.inventory_fragment, container, false)
+
+
+
 
         adapter = activity?.let {
             MainAdapter(
@@ -78,6 +80,27 @@ class InventoryFragment : Fragment(), OnProductItemClickListener{
         CurrentProductInfo.currentId = item.uid
 
         view?.findNavController()?.navigate(R.id.action_inventoryFragment_to_selectedItemFragment)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        inflater!!.inflate(R.menu.menu_search, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView: SearchView = searchItem.actionView as SearchView
+        searchView.imeOptions = EditorInfo.IME_ACTION_DONE
+
+        searchView.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter!!.filter(newText)
+                return false
+            }
+        })
     }
 
 }

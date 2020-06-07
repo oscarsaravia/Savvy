@@ -4,17 +4,21 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.proyecto_final.R
 import kotlinx.android.synthetic.main.product_item.view.*
 
-class MainAdapter(private val context: Context, var clickListener: OnProductItemClickListener): RecyclerView.Adapter<MainAdapter.MainViewHolder>(){
+class MainAdapter(private val context: Context, var clickListener: OnProductItemClickListener): RecyclerView.Adapter<MainAdapter.MainViewHolder>(), Filterable{
 
     private var dataList = mutableListOf<Product>()
+    private var dataListFull = mutableListOf<Product>()
 
     fun setListData(data:MutableList<Product>){
         dataList = data
+        dataListFull = ArrayList(data)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -58,6 +62,39 @@ class MainAdapter(private val context: Context, var clickListener: OnProductItem
 
     }
 
+    override fun getFilter(): Filter? {
+        return exampleFilter
+    }
+
+    private val exampleFilter: Filter = object : Filter() {
+
+        override fun performFiltering(constraint: CharSequence): FilterResults {
+            val filteredList: MutableList<Product> = ArrayList()
+            if (constraint == null || constraint.isEmpty()) {
+                filteredList.addAll(dataListFull)
+            } else {
+                val filterPattern =
+                    constraint.toString().toLowerCase().trim { it <= ' ' }
+                for (item in dataListFull) {
+                    if (item.name.toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item)
+                    }
+                }
+            }
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(
+            constraint: CharSequence,
+            results: FilterResults
+        ) {
+            dataList.clear()
+            dataList.addAll(results.values as List<Product>)
+            notifyDataSetChanged()
+        }
+    }
 }
 
 interface OnProductItemClickListener{
