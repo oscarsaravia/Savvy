@@ -8,19 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/addname"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/name_input"
             android:layout_width="wrap_content"
@@ -37,17 +24,17 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/quantity"
+            android:id="@+id/product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/quantity"
+            android:layout_marginTop="76dp"
+            android:text="@string/addname"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_input" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/quantity_input"
@@ -62,14 +49,14 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/quantity"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.004" />
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:text="@string/price"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="8dp"
             android:text="@string/provider"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -132,5 +119,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/provider_input"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/quantity"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_input" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

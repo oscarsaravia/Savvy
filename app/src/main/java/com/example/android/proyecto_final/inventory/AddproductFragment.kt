@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.android.proyecto_final.R
@@ -20,10 +21,19 @@ class AddproductFragment : Fragment() {
 
     private val db = Firebase.firestore
 
+    lateinit var toolbar: Toolbar
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        toolbar = (activity as AppCompatActivity).toolbar
+        toolbar.setNavigationIcon(null);          // to hide Navigation icon
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Agregar un producto"
-        (activity as AppCompatActivity).supportActionBar?.hide()
+//        (activity as AppCompatActivity).supportActionBar?.hide()
 
         val binding = DataBindingUtil.inflate<AddproductFragmentBinding>(inflater, R.layout.addproduct_fragment, container, false)
 

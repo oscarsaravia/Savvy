@@ -6,6 +6,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
 import android.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,6 +20,7 @@ import com.example.android.proyecto_final.network.CurrentProductInfo
 import com.example.android.proyecto_final.network.MainAdapter
 import com.example.android.proyecto_final.network.OnProductItemClickListener
 import com.example.android.proyecto_final.network.Product
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.inventory_fragment.*
 
 
@@ -31,7 +33,14 @@ class InventoryFragment : Fragment(), OnProductItemClickListener{
     private val viewModel by lazy { ViewModelProvider(this).get(InventoryViewModel::class.java) }
     private lateinit var adapter: MainAdapter
     private lateinit var binding: InventoryFragmentBinding
+    lateinit var toolbar: Toolbar
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        toolbar = (activity as AppCompatActivity).toolbar
+        toolbar.setNavigationIcon(null);          // to hide Navigation icon
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -39,8 +48,6 @@ class InventoryFragment : Fragment(), OnProductItemClickListener{
 //        (activity as AppCompatActivity).supportActionBar?.hide()
 
         val binding = DataBindingUtil.inflate<InventoryFragmentBinding>(inflater, R.layout.inventory_fragment, container, false)
-
-
 
 
         adapter = activity?.let {

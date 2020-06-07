@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.android.proyecto_final.R
@@ -14,14 +15,19 @@ import com.example.android.proyecto_final.databinding.AddproviderFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.content_main.*
 
 
 class AddproviderFragment : Fragment() {
 
     private val db = Firebase.firestore
+    lateinit var toolbar: Toolbar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(false)
+        setHasOptionsMenu(true)
+        toolbar = (activity as AppCompatActivity).toolbar
+        toolbar.setNavigationIcon(null);          // to hide Navigation icon
         super.onCreate(savedInstanceState)
     }
 
@@ -31,7 +37,6 @@ class AddproviderFragment : Fragment() {
     ): View? {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Agregar un proveedor"
-        (activity as AppCompatActivity).supportActionBar?.hide()
         val binding = DataBindingUtil.inflate<AddproviderFragmentBinding>(inflater,
             R.layout.addprovider_fragment, container, false)
 

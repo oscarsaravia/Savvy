@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +19,7 @@ import com.example.android.proyecto_final.databinding.InventoryFragmentBinding
 import com.example.android.proyecto_final.databinding.ProvidersFragmentBinding
 import com.example.android.proyecto_final.inventory.InventoryViewModel
 import com.example.android.proyecto_final.network.*
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.inventory_fragment.*
 
 class ProvidersFragment : Fragment(), OnProviderItemClickListener{
@@ -29,19 +31,22 @@ class ProvidersFragment : Fragment(), OnProviderItemClickListener{
     private val viewModel by lazy { ViewModelProvider(this).get(ProvidersViewModel::class.java) }
     private lateinit var adapter: ProviderAdapter
     private lateinit var binding: ProvidersFragmentBinding
+    lateinit var toolbar: Toolbar
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(false)
+        setHasOptionsMenu(true)
+        toolbar = (activity as AppCompatActivity).toolbar
+        toolbar.setNavigationIcon(null);          // to hide Navigation icon
         super.onCreate(savedInstanceState)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         (activity as AppCompatActivity).supportActionBar?.title = "Proveedores"
-        (activity as AppCompatActivity).supportActionBar?.hide()
 
         val binding = DataBindingUtil.inflate<ProvidersFragmentBinding>(inflater,
             R.layout.providers_fragment, container, false)

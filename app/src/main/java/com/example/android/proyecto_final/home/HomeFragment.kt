@@ -1,15 +1,16 @@
 package com.example.android.proyecto_final.home
-
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.example.android.proyecto_final.MainActivity
 import com.example.android.proyecto_final.R
 import com.example.android.proyecto_final.databinding.HomeFragmentBinding
-import com.example.android.proyecto_final.databinding.LoginFragmentBinding
+import kotlinx.android.synthetic.main.content_main.*
 
 
 class HomeFragment : Fragment() {
@@ -20,9 +21,12 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var viewModel: HomeViewModel
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
+        toolbar = (activity as AppCompatActivity).toolbar
+        toolbar.navigationIcon = getResources().getDrawable(R.drawable.ic_menu)
         super.onCreate(savedInstanceState)
     }
 

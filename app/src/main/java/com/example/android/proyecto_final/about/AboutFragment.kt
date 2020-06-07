@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import com.example.android.proyecto_final.R
 import com.example.android.proyecto_final.databinding.AboutFragmentBinding
@@ -16,11 +17,6 @@ import kotlinx.android.synthetic.main.content_main.*
 
 
 class AboutFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(false)
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 

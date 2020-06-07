@@ -35,14 +35,21 @@ class LoginFragment : Fragment() {
     private lateinit var txtPassword: EditText
     private lateinit var auth:FirebaseAuth
 
+    lateinit var toolbar: Toolbar
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        toolbar = (activity as AppCompatActivity).toolbar
+        toolbar.setNavigationIcon(null);          // to hide Navigation icon
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         (activity as AppCompatActivity).supportActionBar?.title = "Savvy"
 
         //Data Binding
         val binding = DataBindingUtil.inflate<LoginFragmentBinding>(inflater, R.layout.login_fragment, container, false)
-        (activity as AppCompatActivity).supportActionBar?.hide()
-
-       (activity as AppCompatActivity).supportActionBar?.hide()
 
         binding.logoImage.setImageResource(R.drawable.logo)
 

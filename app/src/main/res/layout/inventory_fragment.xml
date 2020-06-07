@@ -20,7 +20,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="763dp"
                 android:orientation="vertical">
 
                 <include layout="@layout/item_row_load" />
@@ -45,8 +45,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="406dp"
-            android:layout_height="619dp"
+            android:layout_width="410dp"
+            android:layout_height="624dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

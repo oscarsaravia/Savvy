@@ -9,11 +9,23 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/currentPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="44dp"
+            android:text="CORREO ELECTRONICO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+        <TextView
             android:id="@+id/name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="76dp"
             android:text="@string/provider_name"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:text="NOMBRE DEL PROVEEDOR"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -36,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:text="@string/phone_number"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="12dp"
             android:text="NUMERO DE TELEFONO"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -59,23 +71,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:text="@string/email_text"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/currentQuantity" />
 
-        <TextView
-            android:id="@+id/currentPrice"
+        <Button
+            android:id="@+id/delete_pruduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:text="CORREO ELECTRONICO"
+            android:text="@string/delete"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.752"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price_text" />
+            app:layout_constraintTop_toBottomOf="@+id/currentPrice"
+            app:layout_constraintVertical_bias="0.169" />
 
         <Button
             android:id="@+id/edit_product"
@@ -87,18 +99,7 @@
             app:layout_constraintHorizontal_bias="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/currentPrice"
-            app:layout_constraintVertical_bias="0.259" />
+            app:layout_constraintVertical_bias="0.169" />
 
-        <Button
-            android:id="@+id/delete_pruduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/delete"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/currentPrice"
-            app:layout_constraintVertical_bias="0.259" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
