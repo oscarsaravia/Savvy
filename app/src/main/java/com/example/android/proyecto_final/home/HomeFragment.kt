@@ -25,13 +25,14 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
-        toolbar = (activity as AppCompatActivity).toolbar
-        toolbar.navigationIcon = getResources().getDrawable(R.drawable.ic_menu)
+//        toolbar = (activity as AppCompatActivity).toolbar
+//        toolbar.navigationIcon = getResources().getDrawable(R.drawable.ic_menu)
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
+        toolbar = (activity as AppCompatActivity).toolbar
+        toolbar.navigationIcon = getResources().getDrawable(R.drawable.ic_menu)
 
         //Set fragment title
         (activity as AppCompatActivity).supportActionBar?.title = "Inicio"

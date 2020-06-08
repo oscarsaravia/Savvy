@@ -7,6 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         style="@style/back_style"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".about.AboutFragment">
@@ -17,6 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bubblegum_sans"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="Savvy Support"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
