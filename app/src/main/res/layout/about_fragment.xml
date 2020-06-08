@@ -6,14 +6,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
+        style="@style/back_style"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".about.AboutFragment">
 
         <Button
             android:id="@+id/btnSupport"
+            style="@style/b_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/bubblegum_sans"
             android:text="Savvy Support"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,6 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Presione el boton para redirigirse a una pagina especializada en el soporte del app."
             android:textAlignment="center"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

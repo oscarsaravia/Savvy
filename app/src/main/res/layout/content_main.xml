@@ -14,19 +14,21 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#0896A8"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
                 <TextView
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Savvy"
-                    android:textColor="#FFFFFF"
-                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+                    android:textColor="#FFFFFF" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

@@ -4,6 +4,7 @@
 
     <LinearLayout
 
+        style="@style/back_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -18,32 +19,36 @@
                 android:id="@+id/title_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="PRODUCTO"
+                android:textColor="#FFFFFF"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:text="PRODUCTO" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="CANTIDAD" />
+                android:text="CANTIDAD"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="PRECIO" />
+                android:text="PRECIO"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/provider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="PROVEEDOR" />
+                android:text="PROVEEDOR"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 

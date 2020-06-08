@@ -5,6 +5,7 @@
 
 
     <LinearLayout
+        style="@style/back_style"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -17,60 +18,64 @@
             android:id="@+id/inventory_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:height="@dimen/button_size"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
+            android:height="@dimen/button_size"
             android:background="@drawable/custom_button"
-            android:text="@string/inventory" />
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="@string/inventory"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/search_button2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:height="@dimen/button_size"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
+            android:height="@dimen/button_size"
             android:background="@drawable/custom_button"
-            android:text="@string/providers" />
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="@string/providers"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/add_producto_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:height="@dimen/button_size"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp"
+            android:height="@dimen/button_size"
             android:background="@drawable/custom_button"
-            android:text="@string/add_product" />
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="@string/add_product"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/add_provider_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:height="@dimen/button_size"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp"
+            android:height="@dimen/button_size"
             android:background="@drawable/custom_button"
-            android:text="AGREGAR UN NUEVO PROVEEDOR" />
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="AGREGAR UN NUEVO PROVEEDOR"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
 
     </LinearLayout>

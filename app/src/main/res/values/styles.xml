@@ -12,5 +12,20 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="b_style">
+        <item name="android:background">@drawable/custom_button</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="back_style">
+        <item name="android:background">#0896A8</item>
+    </style>
+
+    <style name="input_style">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+    </style>
+
 
 </resources>

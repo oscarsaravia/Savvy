@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/back_style"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".inventory.SearchProductFragment">
@@ -21,6 +22,7 @@
         android:ems="10"
         android:hint="Nombre de Producto"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="77dp" />
 

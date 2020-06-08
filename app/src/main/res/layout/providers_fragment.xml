@@ -5,12 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/back_style"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         tools:context=".inventory.InventoryFragment">
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_view_container"
+            style="@style/back_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"

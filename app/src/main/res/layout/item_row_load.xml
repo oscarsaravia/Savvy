@@ -4,6 +4,7 @@
 
     <LinearLayout
 
+        style="@style/back_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -18,13 +19,12 @@
                 android:id="@+id/title_product"
                 android:layout_width="100dp"
                 android:layout_height="24dp"
-                android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:textSize="15sp"
                 android:layout_marginBottom="8dp"
+                android:layout_weight="1"
                 android:background="@color/placeholder_bg"
-                android:textStyle="bold"
-                />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <View
                 android:id="@+id/phone"
@@ -32,8 +32,7 @@
                 android:layout_height="15dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/placeholder_bg"
-                 />
+                android:background="@color/placeholder_bg" />
 
             <View
                 android:id="@+id/email"
@@ -41,16 +40,14 @@
                 android:layout_height="12dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@color/placeholder_bg"
-                />
+                android:background="@color/placeholder_bg" />
 
             <View
                 android:id="@+id/provider"
                 android:layout_width="50dp"
                 android:layout_height="12dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/placeholder_bg"
-                 />
+                android:background="@color/placeholder_bg" />
 
         </LinearLayout>
 
