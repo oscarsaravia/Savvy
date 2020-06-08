@@ -36,7 +36,6 @@ class MainAdapter(private val context: Context, var clickListener: OnProductItem
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val product: Product = dataList[position]
-        //holder.bindView(product)
         holder.initialize(product, clickListener)
     }
 

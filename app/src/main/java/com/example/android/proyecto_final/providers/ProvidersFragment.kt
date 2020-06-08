@@ -2,10 +2,10 @@ package com.example.android.proyecto_final.providers
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.*
+import android.view.inputmethod.EditorInfo
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
@@ -42,14 +42,11 @@ class ProvidersFragment : Fragment(), OnProviderItemClickListener{
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         (activity as AppCompatActivity).supportActionBar?.title = "Proveedores"
 
-        val binding = DataBindingUtil.inflate<ProvidersFragmentBinding>(inflater,
-            R.layout.providers_fragment, container, false)
+        val binding = DataBindingUtil.inflate<ProvidersFragmentBinding>(inflater, R.layout.providers_fragment, container, false)
 
         adapter = activity?.let {
             ProviderAdapter(
@@ -88,6 +85,27 @@ class ProvidersFragment : Fragment(), OnProviderItemClickListener{
         CurrentProviderInfo.currentId = item.uid
 
         view?.findNavController()?.navigate(R.id.action_providersFragment_to_selectedProviderFragment)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        inflater!!.inflate(R.menu.menu_search, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView: SearchView = searchItem.actionView as SearchView
+        searchView.imeOptions = EditorInfo.IME_ACTION_DONE
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.getFilter()?.filter(newText)
+                return false
+            }
+        })
     }
 
 }

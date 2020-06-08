@@ -44,8 +44,7 @@ class InventoryFragment : Fragment(), OnProductItemClickListener{
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-//        (activity as AppCompatActivity).supportActionBar?.title = "Inventario"
-//        (activity as AppCompatActivity).supportActionBar?.hide()
+        (activity as AppCompatActivity).supportActionBar?.title = "Inventario"
 
         val binding = DataBindingUtil.inflate<InventoryFragmentBinding>(inflater, R.layout.inventory_fragment, container, false)
 
