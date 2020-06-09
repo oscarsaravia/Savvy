@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ import androidx.navigation.findNavController
 import com.example.android.proyecto_final.R
 import com.example.android.proyecto_final.databinding.RegisterFragmentBinding
 import com.example.android.proyecto_final.firebase.FirestoreViewModel
+import com.example.android.proyecto_final.network.CurrentUserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
@@ -44,6 +46,7 @@ class RegisterFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
     private lateinit var FviewModel: FirestoreViewModel
+    private lateinit var imageUrl: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(false)
@@ -69,6 +72,7 @@ class RegisterFragment : Fragment() {
         usernametxt = binding.usernameEditText
         companytxt = binding.companyEditText
         auth = FirebaseAuth.getInstance()
+        imageUrl = CurrentUserInfo.photoUrl
 
 
 
@@ -88,7 +92,6 @@ class RegisterFragment : Fragment() {
     }
 
     var selectedPhotoUri: Uri? = null
-    var imageUrl:String? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -104,12 +107,13 @@ class RegisterFragment : Fragment() {
     private fun uploadImage(){
         if (selectedPhotoUri == null) return
         val fileName = UUID.randomUUID().toString()
+        CurrentUserInfo.fileName = fileName
         val ref = FirebaseStorage.getInstance().getReference("/images/$fileName")
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener {
-                    val imageUrl2 = it.toString()
-                    setLink(imageUrl2)
+                    CurrentUserInfo.photoUrl = it.toString()
+
                 }
             }.addOnFailureListener{
                 Toast.makeText(activity, "Error", Toast.LENGTH_LONG).show()
@@ -127,7 +131,6 @@ class RegisterFragment : Fragment() {
         val username = usernametxt.text.toString()
         val company = companytxt.text.toString()
 
-
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(username) && !TextUtils.isEmpty(company)) {
             if(password.length >= 5){
                 if (isEmailValid(email)){
@@ -137,13 +140,18 @@ class RegisterFragment : Fragment() {
                                 if (task.isComplete) {
                                     val user:FirebaseUser?=auth.currentUser
                                     uploadImage()
+                                    val ref = FirebaseStorage.getInstance().getReference("/images/${CurrentUserInfo.fileName}")
+                                    ref.downloadUrl.addOnSuccessListener {
+                                        CurrentUserInfo.photoUrl = it.toString()
+                                    }
 
-                                    if(imageUrl != null){
-                                        FviewModel.crearUsuario(nametxt.text.toString(), companytxt.text.toString(), usernametxt.text.toString(), emailtxt.text.toString(), user?.uid.toString(), imageUrl!!)
+
+                                    if(CurrentUserInfo.fileName != ""){
+                                        FviewModel.crearUsuario(nametxt.text.toString(), companytxt.text.toString(), usernametxt.text.toString(), emailtxt.text.toString(), user?.uid.toString(), CurrentUserInfo.fileName)
                                         action()
                                     }
                                     else{
-                                        Toast.makeText(activity, "Url: $imageUrl", Toast.LENGTH_LONG).show()
+                                        Toast.makeText(activity, "Error :( " + CurrentUserInfo.fileName, Toast.LENGTH_LONG).show()
                                     }
 
                                 } else {
@@ -192,7 +200,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun setLink(source:String){
-        this.imageUrl = source
+        imageUrl = source
     }
 
 

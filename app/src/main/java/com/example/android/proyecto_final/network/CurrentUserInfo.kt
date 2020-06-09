@@ -6,5 +6,6 @@ class CurrentUserInfo {
         var company:String = "default"
         var mail:String = "default"
         var photoUrl:String = ""
+        var fileName:String = ""
     }
 }
