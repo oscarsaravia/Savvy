@@ -151,7 +151,7 @@ class RegisterFragment : Fragment() {
                                         action()
                                     }
                                     else{
-                                        Toast.makeText(activity, "Error :( " + CurrentUserInfo.fileName, Toast.LENGTH_LONG).show()
+                                        Toast.makeText(activity, "Seleccione una imágen", Toast.LENGTH_LONG).show()
                                     }
 
                                 } else {

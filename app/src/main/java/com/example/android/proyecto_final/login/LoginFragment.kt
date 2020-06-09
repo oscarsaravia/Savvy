@@ -104,6 +104,7 @@ class LoginFragment : Fragment() {
                                     CurrentUserInfo.name = result.getString("name").toString()
                                     CurrentUserInfo.company = result.getString("company").toString()
                                     CurrentUserInfo.mail = result.getString("email").toString()
+                                    CurrentUserInfo.fileName = result.getString("image").toString()
                                     (activity as MainActivity).actualizar()
                                 }
                             }

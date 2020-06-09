@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
@@ -16,10 +17,15 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.example.android.proyecto_final.databinding.ActivityMainBinding
 import com.example.android.proyecto_final.network.CurrentUserInfo
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.nav_header.*
 import kotlinx.android.synthetic.main.nav_header.view.*
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
@@ -53,6 +59,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
+    fun actualizar(){
+        navHead.CurrentUserName.text = CurrentUserInfo.name.toUpperCase()
+        navHead.CurrentUserEmail.text = CurrentUserInfo.mail
+        navHead.CurrentUserCompany.text = CurrentUserInfo.company
+        val ref = FirebaseStorage.getInstance().getReference("/images/${CurrentUserInfo.fileName}")
+        ref.downloadUrl.addOnSuccessListener {
+            Glide.with(this).load(it.toString()).into(circle)
+        }.addOnFailureListener{
+            Glide.with(this).load("https://pluspng.com/img-png/user-png-icon-male-user-icon-512.png").into(circle)
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_inicio -> {
@@ -69,12 +87,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
-    }
-
-    fun actualizar(){
-        navHead.CurrentUserName.text = CurrentUserInfo.name.toUpperCase()
-        navHead.CurrentUserEmail.text = CurrentUserInfo.mail
-        navHead.CurrentUserCompany.text = CurrentUserInfo.company
     }
 
 
