@@ -108,6 +108,7 @@ class InventoryFragment : Fragment(), OnProductItemClickListener{
             }
         })
     }
+
     
 
 

@@ -37,4 +37,8 @@
     <string name="provider_name">Nombre del proveedor</string>
     <string name="phone_number">Número de teléfono</string>
     <string name="search">Search</string>
+    <string name="nombre_de_la_empresa">Nombre de la empresa</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="nombre_completo">Nombre completo</string>
+    <string name="correo_electr_nico">Correo electrónico</string>
 </resources>

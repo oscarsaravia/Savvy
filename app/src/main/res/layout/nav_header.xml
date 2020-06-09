@@ -17,6 +17,7 @@
         app:srcCompat="@mipmap/ic_savvy" />
 
     <TextView
+        android:id="@+id/CurrentUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Savvy Inventory App"
@@ -24,12 +25,14 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/CurrentUserCompany"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Company XYZ"
         android:textColor="#FFFFFF" />
 
     <TextView
+        android:id="@+id/CurrentUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="support@company.com"

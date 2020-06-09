@@ -79,8 +79,8 @@
         <action
             android:id="@+id/action_addproductFragment_to_inventoryFragment"
             app:destination="@id/inventoryFragment"
-            app:popUpTo="@id/inventoryFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/selectedItemFragment"
@@ -143,7 +143,7 @@
         <action
             android:id="@+id/action_addproviderFragment_to_providersFragment"
             app:destination="@id/providersFragment"
-            app:popUpTo="@id/providersFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
 </navigation>

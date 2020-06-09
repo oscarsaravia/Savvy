@@ -9,151 +9,121 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/name_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/name"
-            android:textColor="#FAFAFA"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/name_editText"
-            android:layout_width="265dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/input_style"
             android:ems="10"
+            android:hint="@string/nombre_completo"
             android:inputType="textPersonName"
-            android:textColorHint="#FFFFFF"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.109"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_text" />
-
-        <TextView
-            android:id="@+id/username_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/username_text"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_editText" />
+            app:layout_constraintTop_toBottomOf="@+id/submit_photo" />
 
         <EditText
             android:id="@+id/username_editText"
-            android:layout_width="265dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/input_style"
+            android:hint="@string/nombre_de_usuario"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColorHint="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.109"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_text" />
-
-        <TextView
-            android:id="@+id/company_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/companyname_text"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_editText" />
+            app:layout_constraintEnd_toEndOf="@+id/name_editText"
+            app:layout_constraintStart_toStartOf="@+id/name_editText"
+            app:layout_constraintTop_toBottomOf="@+id/name_editText" />
 
         <EditText
             android:id="@+id/company_editText"
-            android:layout_width="265dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="15dp"
             android:ems="10"
+            android:background="@drawable/input_style"
+            android:hint="@string/nombre_de_la_empresa"
             android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.106"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/company_text"
-            style="@style/input_style" />
-
-        <TextView
-            android:id="@+id/email_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/email_text"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/company_editText" />
+            app:layout_constraintEnd_toEndOf="@+id/username_editText"
+            app:layout_constraintStart_toStartOf="@+id/username_editText"
+            app:layout_constraintTop_toBottomOf="@+id/username_editText"/>
 
         <EditText
             android:id="@+id/email_editText"
-            style="@style/input_style"
-            android:layout_width="265dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/input_style"
+            android:hint="Correo electrónico"
+            android:layout_marginTop="8dp"
+            android:layout_height="50dp"
             android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_text" />
-
-        <TextView
-            android:id="@+id/password_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/password_text"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_editText" />
+            app:layout_constraintEnd_toEndOf="@+id/company_editText"
+            app:layout_constraintStart_toStartOf="@+id/company_editText"
+            app:layout_constraintTop_toBottomOf="@+id/company_editText"
+            tools:layout_editor_absoluteY="309dp" />
 
         <EditText
             android:id="@+id/password_editText"
-            style="@style/input_style"
-            android:layout_width="265dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/input_style"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:ems="10"
+            android:layout_marginTop="8dp"
+            android:hint="Contraseña"
             android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_text" />
+            app:layout_constraintEnd_toEndOf="@+id/email_editText"
+            app:layout_constraintStart_toStartOf="@+id/email_editText"
+            app:layout_constraintTop_toBottomOf="@+id/email_editText"
+            tools:layout_editor_absoluteY="397dp" />
 
         <Button
             android:id="@+id/button"
             style="@style/b_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/bubblegum_sans"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/register_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/password_editText"
+            app:layout_constraintStart_toStartOf="@+id/password_editText"
             app:layout_constraintTop_toBottomOf="@+id/password_editText"
             app:layout_constraintVertical_bias="0.351" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/submit_photo"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/upload_image"
+            android:text="Seleccionar\n imágen"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/uploaded_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="@+id/submit_photo"
+            app:layout_constraintEnd_toEndOf="@+id/submit_photo"
+            app:layout_constraintStart_toStartOf="@+id/submit_photo"
+            app:layout_constraintTop_toTopOf="@+id/submit_photo" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

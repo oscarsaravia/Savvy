@@ -9,14 +9,15 @@ class FirebaseRepo {
 
     private val db = Firebase.firestore
 
-    fun setUserData(name:String, company:String, username:String, email:String, uid:String){
+    fun setUserData(name:String, company:String, username:String, email:String, uid:String, image:String){
         Log.d("ENTER", "Entrando al metodo")
 
         val userHashMap = hashMapOf(
             "name" to name,
             "company" to company,
             "username" to username,
-            "email" to email)
+            "email" to email,
+            "image" to image)
 
         db.collection("users").document(uid)
             .set(userHashMap).addOnSuccessListener {

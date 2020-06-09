@@ -1,11 +1,12 @@
 package com.example.android.proyecto_final.register
 
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.text.Editable
+import android.provider.MediaStore
 import android.text.TextUtils
-import android.text.TextWatcher
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import java.util.*
+import java.util.regex.Pattern
 
 
 /**
@@ -67,12 +71,49 @@ class RegisterFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
 
+
+
         binding.button.setOnClickListener { v: View ->
             register(v)
 
         }
 
+        binding.submitPhoto.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, 0)
+        }
+
         return binding.root
+    }
+
+    var selectedPhotoUri: Uri? = null
+    var imageUrl:String? = null
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null){
+            selectedPhotoUri = data.data
+            val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, selectedPhotoUri)
+            binding.uploadedImage.setImageBitmap(bitmap)
+            binding.submitPhoto.alpha = 0f
+        }
+
+    }
+
+    private fun uploadImage(){
+        if (selectedPhotoUri == null) return
+        val fileName = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/images/$fileName")
+        ref.putFile(selectedPhotoUri!!)
+            .addOnSuccessListener {
+                ref.downloadUrl.addOnSuccessListener {
+                    val imageUrl2 = it.toString()
+                    setLink(imageUrl2)
+                }
+            }.addOnFailureListener{
+                Toast.makeText(activity, "Error", Toast.LENGTH_LONG).show()
+            }
     }
 
     private fun register(view: View) {
@@ -89,14 +130,21 @@ class RegisterFragment : Fragment() {
 
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(username) && !TextUtils.isEmpty(company)) {
             if(password.length >= 5){
-                if (email.isValidEmail()){
+                if (isEmailValid(email)){
                     activity?.let {
                         auth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(it) { task ->
                                 if (task.isComplete) {
                                     val user:FirebaseUser?=auth.currentUser
-                                    FviewModel.crearUsuario(nametxt.text.toString(), companytxt.text.toString(), usernametxt.text.toString(), emailtxt.text.toString(), user?.uid.toString())
-                                    action()
+                                    uploadImage()
+
+                                    if(imageUrl != null){
+                                        FviewModel.crearUsuario(nametxt.text.toString(), companytxt.text.toString(), usernametxt.text.toString(), emailtxt.text.toString(), user?.uid.toString(), imageUrl!!)
+                                        action()
+                                    }
+                                    else{
+                                        Toast.makeText(activity, "Url: $imageUrl", Toast.LENGTH_LONG).show()
+                                    }
 
                                 } else {
                                     Toast.makeText(activity, "ERROR", Toast.LENGTH_SHORT).show()
@@ -131,6 +179,26 @@ class RegisterFragment : Fragment() {
         //continue processing
 
     }
+
+    private fun isEmailValid(email: String): Boolean {
+        return Pattern.compile(
+            "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]|[\\w-]{2,}))@"
+                    + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                    + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9]))|"
+                    + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$"
+        ).matcher(email).matches()
+    }
+
+    private fun setLink(source:String){
+        this.imageUrl = source
+    }
+
+
+
+
+
 }
 
 

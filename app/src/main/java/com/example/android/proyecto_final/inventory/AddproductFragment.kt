@@ -1,6 +1,7 @@
 package com.example.android.proyecto_final.inventory
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,19 +39,22 @@ class AddproductFragment : Fragment() {
         val binding = DataBindingUtil.inflate<AddproductFragmentBinding>(inflater, R.layout.addproduct_fragment, container, false)
 
         binding.add.setOnClickListener {
-            val newproduct = hashMapOf(
-                "name" to binding.nameInput.text.toString(),
-                "price" to binding.priceInput.text.toString(),
-                "provider" to binding.providerInput.text.toString(),
-                "quantity" to binding.quantityInput.text.toString()
-            )
-            FirebaseAuth.getInstance().currentUser?.uid?.let { it1 ->
-                db.collection("users").document(
-                    it1
-                ).collection("products").add(newproduct)
+            if(!TextUtils.isEmpty(binding.nameInput.text) && !TextUtils.isEmpty(binding.priceInput.text) && !TextUtils.isEmpty(binding.providerInput.text) && !TextUtils.isEmpty(binding.quantityInput.text)){
+
+                val newproduct = hashMapOf(
+                    "name" to binding.nameInput.text.toString(),
+                    "price" to binding.priceInput.text.toString(),
+                    "provider" to binding.providerInput.text.toString(),
+                    "quantity" to binding.quantityInput.text.toString()
+                )
+                FirebaseAuth.getInstance().currentUser?.uid?.let { it1 ->
+                    db.collection("users").document(
+                        it1
+                    ).collection("products").add(newproduct)
+                }
+                view?.findNavController()?.navigate(R.id.action_addproductFragment_to_inventoryFragment)
             }
 
-            view?.findNavController()?.navigate(R.id.action_addproductFragment_to_inventoryFragment)
         }
 
         return binding.root

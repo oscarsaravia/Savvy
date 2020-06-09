@@ -4,13 +4,18 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.android.proyecto_final.MainActivity
 import com.example.android.proyecto_final.R
 import com.example.android.proyecto_final.databinding.HomeFragmentBinding
+import com.example.android.proyecto_final.network.CurrentUserInfo
+import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.nav_header.view.*
 
 
 class HomeFragment : Fragment() {
@@ -24,9 +29,10 @@ class HomeFragment : Fragment() {
     lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
 //        toolbar = (activity as AppCompatActivity).toolbar
 //        toolbar.navigationIcon = getResources().getDrawable(R.drawable.ic_menu)
+
         super.onCreate(savedInstanceState)
     }
 
@@ -54,6 +60,8 @@ class HomeFragment : Fragment() {
         binding.addProviderButton.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_homeFragment_to_addproviderFragment)
         }
+
+
 
         return binding.root
     }
